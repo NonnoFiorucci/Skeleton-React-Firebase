@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { FirebaseContext } from '../Firebase';
 import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../costants/routes';
+import * as ROUTES from '../../constants/routes';
 import { compose } from 'recompose';
 
 const INITIAL_STATE = {

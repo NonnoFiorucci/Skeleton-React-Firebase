@@ -4,14 +4,17 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
-import SignInPage from '../SingIn';
+import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import { AuthUserContext } from '../Session';
 
-import * as ROUTES from '../../costants/routes';
+import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../Firebase';
+
+import { withAuthentication } from '../Session';
 
 class App extends Component{
   constructor(props){
@@ -35,9 +38,11 @@ class App extends Component{
 
 render(){
   return(
+    <AuthUserContext.Provider value={this.state.authUser}>
  <Router>
     <div>
-    <Navigation authUser={this.state.authUser} />
+    <Navigation  />
+    
     <hr />
 
     <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -49,6 +54,7 @@ render(){
     <Route path={ROUTES.ADMIN} component={AdminPage} />
     </div>
   </Router>
+  </AuthUserContext.Provider>
   );
 }
 

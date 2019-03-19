@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { withAuthorization } from '../Session'; 
 
 const Home = () => (
   <div>
@@ -7,4 +8,8 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+// garantire accesso a utente autorizzato/registrato
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Home);
+
